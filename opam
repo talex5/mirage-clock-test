@@ -1,0 +1,24 @@
+opam-version: "1.2"
+name: "mirage-clock-test"
+version: "0.1"
+maintainer: "Thomas Leonard <talex5@gmail.com>"
+authors: "Thomas Leonard <talex5@gmail.com>"
+homepage: "https://github.com/talex5/mirage-clock-test"
+dev-repo: "https://github.com/talex5/mirage-clock-test.git"
+bug-reports: "https://github.com/talex5/mirage-clock-test/issues"
+license: "BSD-2-clause"
+build: [
+  "ocaml" "pkg/pkg.ml" "build"
+          "--pinned" pinned
+]
+build-test: [
+ [ "ocaml" "pkg/pkg.ml" "build" "--pinned" pinned "--tests" "true" ]
+ [ "ocaml" "pkg/pkg.ml" "test" ]
+]
+depends: [
+  "mirage-types-lwt"
+  "logs" { >= "0.5.0" }
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "topkg" {build & >= "0.7.8" }
+]

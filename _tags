@@ -1,0 +1,4 @@
+true: warn(A), strict_sequence, safe_string, bin_annot
+true: package(mirage-types, lwt, logs)
+<test/*>: package(unix, lwt.unix)
+<src>: include

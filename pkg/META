@@ -1,0 +1,7 @@
+description = "Implementation of Mirage's CLOCK type for unit-tests"
+version = "%%VERSION_NUM%%"
+requires = "mirage-types.lwt, logs"
+archive(byte) = "mirage-clock-test.cma"
+archive(native) = "mirage-clock-test.cmxa"
+plugin(byte) = "mirage-clock-test.cma"
+plugin(native) = "mirage-clock-test.cmxs"
