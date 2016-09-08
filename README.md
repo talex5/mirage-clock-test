@@ -40,8 +40,8 @@ let () =
     (* Nothing happens in the first second. *)
     Mirage_clock_test.run_to 101.0;
     Log.expect [];
-    (* Lots happens in the first 15 seconds. *)
-    Mirage_clock_test.run_to 115.0;
+    (* Lots happens in the first 14 seconds. *)
+    Mirage_clock_test.run_to 114.0;
     Log.expect [
       "[103.00] fizz";
       "[105.00] buzz";
@@ -49,12 +49,14 @@ let () =
       "[109.00] fizz";
       "[110.00] buzz";
       "[112.00] fizz";
-      "[115.00] fizz";
-      "[115.00] buzz";
     ];
     print_endline "Tests passed!";
     Lwt.return ()
 end
 ```
+
+Note that we stop before 15s.
+At that point both events fire at once and so the log messages could appear in either order.
+It's helpful to arrange your test events to happen at different times to avoid having to handle multiple cases.
 
 This code is based on the code used for [CueKeeper's unit tests](https://github.com/talex5/cuekeeper/blob/ce81f4e3c40b79d99ac4063d22cfba4cd568e7e5/tests/test.ml#L27).

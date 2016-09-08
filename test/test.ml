@@ -47,8 +47,8 @@ let () =
     (* Nothing happens in the first second. *)
     Mirage_clock_test.run_to 101.0;
     Log.expect [];
-    (* Lots happens in the first 15 seconds. *)
-    Mirage_clock_test.run_to 115.0;
+    (* Lots happens in the first 14 seconds. *)
+    Mirage_clock_test.run_to 114.0;
     Log.expect [
       "[103.00] fizz";
       "[105.00] buzz";
@@ -56,8 +56,6 @@ let () =
       "[109.00] fizz";
       "[110.00] buzz";
       "[112.00] fizz";
-      "[115.00] fizz";
-      "[115.00] buzz";
     ];
     print_endline "Tests passed!";
     Lwt.return ()
