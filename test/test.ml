@@ -44,8 +44,10 @@ let () =
     Mirage_clock_test.run_to 100.0;   (* Start at time t=100 *)
     (* Start the main thread running. *)
     Lwt.async A.main;
+    (* Nothing happens in the first second. *)
     Mirage_clock_test.run_to 101.0;
     Log.expect [];
+    (* Lots happens in the first 15 seconds. *)
     Mirage_clock_test.run_to 115.0;
     Log.expect [
       "[103.00] fizz";
